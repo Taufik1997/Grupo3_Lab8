@@ -39,6 +39,6 @@ double Defensa()const{
 
 string Corazas::toString(){
 	stringstream ss;
-	ss<<nombre<<" "<<ciudad<<" "<<edad<<" "<<flechas<<" "<<precision;
+	ss<<nombre<<" "<<ciudad<<" "<<edad<<" "<<lanzas<<" "<<armadura;
 	return ss.str();
 }
