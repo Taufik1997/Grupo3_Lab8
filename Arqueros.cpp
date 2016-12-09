@@ -5,11 +5,11 @@
 using std::stringstream;
 using std::string;
 
-Arqueros::Arqueros() : Usuario(){
+Arqueros::Arqueros() : Soldado(){
     
 }
 
-Arqueros::Arqueros(string nombre,string ciudad, int edad, int flechas, double precision) : Usuario(nombre,ciudad,precision),flechas(flechas),precision(precision){
+Arqueros::Arqueros(string nombre,string ciudad, int edad, int flechas, double presicion) : Soldado(nombre,ciudad,edad),flechas(flechas),presicion(presicion){
     
 }
 
@@ -21,8 +21,8 @@ int Arqueros::getFlechas(){
   return flechas;
 }
 
-void Arqueros::setPrecision(int precision2){
-  precision = precision2;
+void Arqueros::setPresicion(int presicion2){
+  presicion = presicion2;
 }
 
 int Arqueros::getPresicion(){
@@ -39,6 +39,6 @@ double Defensa()const{
 
 string Arqueros::toString(){
 	stringstream ss;
-	ss<<nombre<<" "<<ciudad<<" "<<edad<<" "<<flechas<<" "<<precision;
+	ss<<nombre<<" "<<ciudad<<" "<<edad<<" "<<flechas<<" "<<presicion;
 	return ss.str();
 }
