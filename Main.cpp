@@ -3,8 +3,13 @@
 #include <vector>
 #include <stdlib.h>
 #include <cstdlib>
-void cleanScreen();
+#include "Escuadron.h"
+#include "Soldado.h"
+#include "Corazas.h"
+#include "Arqueros.h"
+#include "Asesinos.h"
 using namespace std;
+void cleanScreen();
 int main(){
 	initscr();
 	char opc[1];
