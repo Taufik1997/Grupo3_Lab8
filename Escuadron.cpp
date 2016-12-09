@@ -45,7 +45,7 @@ double Escuadron::getDefensa(){
 
 string Escuadron::toString(){
 	stringstream ss;
-	ss<<"Nombre: "<<nombre;
+	ss<<nombre;
 	return ss.str();
 }
 

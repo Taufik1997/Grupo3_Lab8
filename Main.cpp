@@ -88,17 +88,92 @@ int main(){
 		}//fin opcion 1
 
 		if(opc[0]=='2'){
-			vector<Escuadron*> bando1;
-			vector<Escuadron*> bando2;
-			string tryW;
-			mvprintw(0,0,"Lista de escuadrones:\n");
-			for (int i = 0; i < escuadrones.size(); ++i)
-			{
-				tryW = escuadrones.at(i)->toString();
+			if(escuadrones.size() >= 4){
+				vector<Escuadron*> bando1;
+				vector<Escuadron*> bando2;
+				string tryW;
+				mvprintw(0,0,"Lista de escuadrones:\n");
+				for (int i = 0; i < escuadrones.size(); ++i)
+				{
+					tryW = escuadrones.at(i)->toString();
 
-				printw("\n %d %s",i,tryW.c_str());
-				getch();
+					printw("\n %d %s",i,tryW.c_str());
+					getch();
+				}
+				printw("Ingrese el primer escuadron del primer bando:\n");
+				char frontP[1];
+				getstr(frontP);
+				clear();
+				printw("Ingrese el segundo escuadron del primer bando:\n");
+				char retaP[1];
+				getstr(retaP);
+				clear();
+				bando1.push_back(escuadrones.at(atoi(frontP)));
+				bando1.push_back(escuadrones.at(atoi(retaP)));
+				printw("Ingrese el primer escuadron del segundo bando:\n");
+				char frontP2[1];
+				getstr(frontP2);
+				clear();
+				printw("Ingrese el segundo escuadron del segundo bando:\n");
+				char retaP2[1];
+				getstr(retaP2);
+				clear();
+				bando2.push_back(escuadrones.at(atoi(frontP2)));
+				bando2.push_back(escuadrones.at(atoi(retaP2)));
+				bool ganador = false;
+				int contador2 = 0;
+				do{
+					char front[1];
+					char reta[1];
+					printw("Bando 1:\n");
+					for (int i = 0; i < bando1.size(); ++i)
+					{
+						tryW = bando1.at(i)->toString();
+
+						printw("\n %d %s",i,tryW.c_str());
+						getch();
+					}
+					for (int i = 0; i < bando2.size(); ++i)
+					{
+						tryW = bando2.at(i)->toString();
+
+						printw("\n %d %s",i,tryW.c_str());
+						getch();
+					}
+
+					if(contador2 % 2 == 0){
+						printw("Es el turno del bando uno para atacar, ingrese el escuadron frontal para atacar:\n");
+						getstr(front);
+						printw("Es el turno del bando dos para escoger su defensa, ingrese el escuadron de retaguardia:\n");
+						getstr(reta);
+						if(bando1.at(atoi(front))->getAtaque() > (bando2.at(atoi(reta))->getDefensa()*10)){
+							ganador = true;
+						}
+
+					}else{
+						printw("Es el turno del bando dos para atacar, ingrese el escuadron frontal para atacar:\n");
+						getstr(front);
+						printw("Es el turno del bando uno para escoger su defensa, ingrese el escuadron de retaguardia:\n");
+						getstr(reta);
+						if(bando2.at(atoi(front))->getAtaque() > (bando1.at(atoi(reta))->getDefensa()*10)){
+							ganador = true;
+						}
+
+					}
+					contador2++;
+				}while(!ganador);
+				if((contador2-1) % 2 == 0){
+					printw("El ganador es el bando 2!");
+				}else{
+					printw("El ganador es el bando 1!");
+				}
+
+			}else{
+				printw("Tiene que haber mas de cuatro escuadrones para iniciar la simulacion.");
+				clear();
 			}
+			
+
 
 			
 		}//fin opcion 2
@@ -106,13 +181,4 @@ int main(){
 	}while(opc[0]!=3);
 	
 	endwin();
-}
-void cleanScreen(){
-	for (int i = 0; i < 500; ++i)
-	{
-		for (int j = 0; j < 500; ++j)
-		{
-			mvprintw(i,j,"             .            ");
-		}
-	}
 }
