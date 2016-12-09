@@ -34,11 +34,12 @@ int main(){
 			mvprintw(0,0,"Ingrese el nombre de su escuadron: ");
 			getstr(nombre);
 			clear();
-			mvprintw(0,1,"Ingrese la cantidad de soldados: ");
+			mvprintw(1,0,"Ingrese la cantidad de soldados: ");
 			getstr(cantidadSoldados);
 			clear();
+			int m = atoi(cantidadSoldados);
 			escuadrones.push_back(new Escuadron(nombre));
-			for (int i = 0; i < atoi(cantidadSoldados); ++i)
+			for (int i = 0; i < m; ++i)
 			{
 				char opcS[1];
 				char nombreSoldado[20], ciudad[20], edad[13];
@@ -90,11 +91,12 @@ int main(){
 			vector<Escuadron*> bando1;
 			vector<Escuadron*> bando2;
 			string tryW;
+			mvprintw(0,0,"Lista de escuadrones:\n");
 			for (int i = 0; i < escuadrones.size(); ++i)
 			{
 				tryW = escuadrones.at(i)->toString();
 
-				mvprintw(0,0,"%d %s",i,tryW.c_str());
+				printw("\n %d %s",i,tryW.c_str());
 				getch();
 			}
 
