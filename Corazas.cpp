@@ -10,7 +10,7 @@ Corazas::Corazas() : Soldado(){
 }
 
 Corazas::Corazas(string nombre,string ciudad, int edad, int armadura, int lanzas) : Soldado(nombre,ciudad,edad),armadura(armadura),lanzas(lanzas){
-    
+  
 }
 
 void Corazas::setArmadura(int armadura2){

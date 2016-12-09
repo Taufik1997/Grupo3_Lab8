@@ -37,6 +37,8 @@ void Escuadron::addSoldado(Soldado* soldado){
 
 
 
+
+
 string Escuadron::toString(){
 	stringstream ss;
 	ss<<"Nombre: "<<nombre;

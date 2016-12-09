@@ -1,5 +1,5 @@
 juego: Main.o Soldado.o Arqueros.o Escuadron.o Asesinos.o Corazas.o 
-	g++ Main.o Soldado.o Arqueros.o Escuadron.o Asesinos.o -o juego -lncurses
+	g++ Main.o Soldado.o Arqueros.o Escuadron.o Asesinos.o Corazas.o -o juego -lncurses
 
 Main.o:	Main.cpp Soldado.h Arqueros.h Asesinos.h Corazas.h Escuadron.h
 	g++ -c Main.cpp -lncurses
