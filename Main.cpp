@@ -22,7 +22,7 @@ int main(){
 		//mvprintw(0,0,"");
 		mvprintw(0,0,"Menu\n1. Crear un escuadron\n2. Simulador\nPor favor, ingrese su opcion\n");
 		getstr(opc);
-		cleanScreen();
+		clear();
 		if(opc[0]=='1'){//Opc 1
 			//nombre, escuadrones,
 			//nombre, ciudad, edad (soldado)
@@ -33,10 +33,10 @@ int main(){
 			char cantidadSoldados[13];
 			mvprintw(0,0,"Ingrese el nombre de su escuadron: ");
 			getstr(nombre);
-			cleanScreen();
+			clear();
 			mvprintw(0,1,"Ingrese la cantidad de soldados: ");
 			getstr(cantidadSoldados);
-			cleanScreen();
+			clear();
 			escuadrones.push_back(new Escuadron(nombre));
 			for (int i = 0; i < atoi(cantidadSoldados); ++i)
 			{
@@ -48,7 +48,7 @@ int main(){
 				mvprintw(0,0,"Ingrese que tipo de soldado quiere\n");
 				mvprintw(0,1,"1. Arquero\n2. Coraza\n3. Asesino\n");
 				getstr(opcS);
-				cleanScreen();
+				clear();
 				mvprintw(0,0,"Ingrese el nombre del soldado: ");
 				getstr(nombreSoldado);
 				mvprintw(1,0,"Ingrese la ciudad del soldado: ");
@@ -81,7 +81,7 @@ int main(){
 					}while(atoi(cDesapercibido)>0 && atoi(cDesapercibido)<11);
 					escuadrones.at(contador)->addSoldado(new Asesinos(nombreSoldado, ciudad, atoi(edad), atoi(cantAsesinato), atoi(cDesapercibido)));
 				}
-				cleanScreen();
+				clear();
 			}//fin for
 			contador++;
 		}//fin opcion 1
