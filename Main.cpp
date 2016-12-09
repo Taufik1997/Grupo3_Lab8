@@ -87,7 +87,16 @@ int main(){
 		}//fin opcion 1
 
 		if(opc[0]=='2'){
+			vector<Escuadron*> bando1;
+			vector<Escuadron*> bando2;
+			string tryW;
+			for (int i = 0; i < escuadrones.size(); ++i)
+			{
+				tryW = escuadrones.at(i)->toString();
+				printw(tryW.c_str());
+			}
 
+			
 		}//fin opcion 2
 		
 	}while(opc[0]!=3);

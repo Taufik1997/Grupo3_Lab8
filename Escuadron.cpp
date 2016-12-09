@@ -35,9 +35,13 @@ void Escuadron::addSoldado(Soldado* soldado){
 	this->soldados.push_back(soldado); 
 }
 
+double Escuadron::getAtaque(){
+	return ataque;
+} 
 
-
-
+double Escuadron::getDefensa(){
+	return defensa;
+} 
 
 string Escuadron::toString(){
 	stringstream ss;
