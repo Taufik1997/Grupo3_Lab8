@@ -9,8 +9,9 @@ Arqueros::Arqueros() : Soldado(){
     
 }
 
-Arqueros::Arqueros(string nombre,string ciudad, int edad, int flechas, double presicion) : Soldado(nombre,ciudad,edad),flechas(flechas),presicion(presicion){
-    
+Arqueros::Arqueros(string nombre,string ciudad, int edad, int flechas, double precision) : Soldado(nombre,ciudad,edad){
+    this -> precision = precision;
+    this-> flechas = flechas;
 }
 
 void Arqueros::setFlechas(int flechas2){
@@ -21,24 +22,24 @@ int Arqueros::getFlechas(){
   return flechas;
 }
 
-void Arqueros::setPresicion(int presicion2){
-  presicion = presicion2;
+void Arqueros::setPrecision(double precision2){
+  precision = precision2;
 }
 
-int Arqueros::getPresicion(){
-  return presicion;
+double Arqueros::getPrecision(){
+  return precision;
 }
 
-double Ataque()const{
-	return flechas * presicion/1000;
+double Arqueros::Ataque()const{
+	return flechas * precision/1000;
 }
 
-double Defensa()const{
+double Arqueros::Defensa()const{
 	return 0;
 }
 
 string Arqueros::toString(){
 	stringstream ss;
-	ss<<nombre<<" "<<ciudad<<" "<<edad<<" "<<flechas<<" "<<presicion;
+	ss<<nombre<<" "<<ciudad<<" "<<edad<<" "<<flechas<<" "<<precision;
 	return ss.str();
 }

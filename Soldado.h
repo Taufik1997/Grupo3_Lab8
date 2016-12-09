@@ -8,13 +8,13 @@ using std::string;
 
 class Soldado{
 private:
+
+	
+public:
 	string nombre;
 	string ciudad;
 	int edad;
-	
-	
-public:
-	Soldado(string,string,string);
+	Soldado(string,string,int);
 	Soldado();
 	virtual ~Soldado();
 	void setNombre(string);

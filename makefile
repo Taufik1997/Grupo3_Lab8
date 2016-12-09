@@ -1,14 +1,22 @@
-juego: Soldado.o Arqueros.o Escuadron.o Corazas.o Main.o
-	g++ Soldado.o Arqueros.o Escuadron.o Main.o -o juego -lncurses
-Main.o:	Main.cpp Arqueros.h Escuadron.h Soldado.h
+juego: Main.o Soldado.o Arqueros.o Escuadron.o Asesinos.o Corazas.o 
+	g++ Main.o Soldado.o Arqueros.o Escuadron.o Asesinos.o -o juego -lncurses
+
+Main.o:	Main.cpp Soldado.h Arqueros.h Asesinos.h Corazas.h Escuadron.h
 	g++ -c Main.cpp -lncurses
+
 Soldado.o:	Soldado.cpp Soldado.h
 	g++ -c Soldado.cpp
-Arqueros.o:	Arqueros.cpp Arqueros.h Soldados.h
-	g++ -c Arqueros.cpp
+
 Escuadron.o:	Escuadron.cpp Escuadron.h
 	g++ -c Escuadron.cpp
-Corazas.o:	Corazas.cpp Corazas.h Soldados.h
+
+Arqueros.o:	Arqueros.cpp Arqueros.h Soldado.h
+	g++ -c Arqueros.cpp
+
+Corazas.o:	Corazas.cpp Corazas.h Soldado.h
 	g++ -c Corazas.cpp
-Asesinos.o:	Asesinos.cpp Asesinos.h Soldados.h
+
+Asesinos.o:	Asesinos.cpp Asesinos.h Soldado.h
 	g++ -c Asesinos.cpp
+clean:
+	rm -f *.o juego

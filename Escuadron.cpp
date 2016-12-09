@@ -12,6 +12,8 @@ Escuadron::Escuadron(){
 
 Escuadron::Escuadron(string nombre) {
 	this->nombre = nombre;
+	ataque = 0;
+	defensa = 0;
 }
 	
 
@@ -27,13 +29,12 @@ string Escuadron::getNombre(){
   return nombre;
 }
 
-void Escuadron::addSoldados(Soldado* soldado){
+void Escuadron::addSoldado(Soldado* soldado){
+	ataque+= soldado->Ataque();
+	defensa+= soldado->Defensa();
 	this->soldados.push_back(soldado); 
 }
 
-Soldados* getSoldados(){
-	return soldados;
-}
 
 
 string Escuadron::toString(){

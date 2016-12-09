@@ -29,11 +29,11 @@ int Corazas::getLanzas(){
   return lanzas;
 }
 
-double Ataque()const{
+double Corazas::Ataque()const{
 	return lanzas;
 }
 
-double Defensa()const{
+double Corazas::Defensa()const{
 	return armadura;
 }
 

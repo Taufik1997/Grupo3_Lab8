@@ -13,28 +13,28 @@ Asesinos::Asesinos(string nombre,string ciudad, int edad, int asesinatos, int de
     
 }
 
-void Asesinos::setAsesinatos(int Asesinatos2){
-  Asesinatos = Asesinatos2;
+void Asesinos::setAsesinatos(int asesinatos2){
+  asesinatos = asesinatos2;
 }
 
 int Asesinos::getAsesinatos(){
-  return Asesinatos;
+  return asesinatos;
 }
 
-void Asesinos::setDesapercivido(int desapervido2){
-  desapervido = desapervido2;
+void Asesinos::setDesapercivido(int desapercivido2){
+  desapercivido = desapercivido2;
 }
 
 int Asesinos::getDesapercivido(){
-  return desapervido;
+  return desapercivido;
 }
 
-double Ataque()const{
+double Asesinos::Ataque()const{
 	return asesinatos;
 }
 
-double Defensa()const{
-	return desapervido*10;
+double Asesinos::Defensa()const{
+	return desapercivido*10;
 }
 
 string Asesinos::toString(){
