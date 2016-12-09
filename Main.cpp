@@ -93,7 +93,9 @@ int main(){
 			for (int i = 0; i < escuadrones.size(); ++i)
 			{
 				tryW = escuadrones.at(i)->toString();
-				printw(tryW.c_str());
+
+				mvprintw(0,0,"%d %s",i,tryW.c_str());
+				getch();
 			}
 
 			

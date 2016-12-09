@@ -22,6 +22,8 @@ public:
 	string getNombre();
 	void addSoldado(Soldado*);
 	string toString();
+	double getAtaque();
+	double getDefensa();
 };
 
 #endif
