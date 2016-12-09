@@ -10,8 +10,8 @@ class Corazas : public Soldado {
     	int armadura;
     	int lanzas;
     public:
-        Arqueros();
-        Arqueros(string,string,int,int,int);
+        Corazas();
+        Corazas(string,string,int,int,int);
         void setArmadura(int);
 		int getArmadura();
 		void setLanzas(int);
