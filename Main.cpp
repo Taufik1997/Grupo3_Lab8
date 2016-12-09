@@ -19,11 +19,11 @@ int main(){
 	char opc[1];
 	vector<Escuadron*> escuadrones;
 	do{
-		mvprintw(0,0,"Menu\n");
-		mvprintw(0,1,"1. Crear un escuadron\n2. Simulador");
+		//mvprintw(0,0,"");
+		mvprintw(0,0,"Menu\n1. Crear un escuadron\n2. Simulador\nPor favor, ingrese su opcion\n");
 		getstr(opc);
 		cleanScreen();
-		if(opc[1]=='1'){//Opc 1
+		if(opc[0]=='1'){//Opc 1
 			//nombre, escuadrones,
 			//nombre, ciudad, edad (soldado)
 			//arquero: flechas, precision(double)
@@ -34,7 +34,7 @@ int main(){
 			mvprintw(0,0,"Ingrese el nombre de su escuadron: ");
 			getstr(nombre);
 			cleanScreen();
-			mvprintw(0,0,"Ingrese la cantidad de soldados: ");
+			mvprintw(0,1,"Ingrese la cantidad de soldados: ");
 			getstr(cantidadSoldados);
 			cleanScreen();
 			escuadrones.push_back(new Escuadron(nombre));
@@ -48,34 +48,35 @@ int main(){
 				mvprintw(0,0,"Ingrese que tipo de soldado quiere\n");
 				mvprintw(0,1,"1. Arquero\n2. Coraza\n3. Asesino\n");
 				getstr(opcS);
+				cleanScreen();
 				mvprintw(0,0,"Ingrese el nombre del soldado: ");
 				getstr(nombreSoldado);
-				mvprintw(0,1,"Ingrese la ciudad del soldado: ");
+				mvprintw(1,0,"Ingrese la ciudad del soldado: ");
 				getstr(ciudad);
-				mvprintw(0,2,"Ingrese la edad del soldado: ");
+				mvprintw(2,0,"Ingrese la edad del soldado: ");
 				getstr(edad);
 				if(opcS[0]=='1'){//Arquero
-					mvprintw(0,3,"Ingrese la cantidad de flechas: ");
+					mvprintw(3,0,"Ingrese la cantidad de flechas: ");
 					getstr(cantFlechas);
-					mvprintw(0,4,"Ingrese la precision (mm): ");
+					mvprintw(4,0,"Ingrese la precision (mm): ");
 					getstr(precision);
 					escuadrones.at(contador)->addSoldado(new Arqueros(nombreSoldado, ciudad, atoi(edad), atoi(cantFlechas), atof(precision)));
 					//escuadrones.push_back(new Arqueros(nombreSoldado, ciudad, atoi(edad), atoi(cantFlechas), atof(precision)));
 				}
 				if(opcS[0]=='2'){//Coraza
 					do{
-						mvprintw(0,3,"Ingrese la dureza de la armadura del soldado: ");
+						mvprintw(3,0,"Ingrese la dureza de la armadura del soldado: ");
 						getstr(dureza);
 					}while(atoi(dureza)>0 && atoi(dureza)<11);
-					mvprintw(0,4,"Ingrese la cantidad de lanzas: ");
+					mvprintw(4,0,"Ingrese la cantidad de lanzas: ");
 					getstr(cantLanzas);
 					escuadrones.at(contador)->addSoldado(new Corazas(nombreSoldado, ciudad, atoi(edad), atoi(dureza), atoi(cantLanzas)));
 				}
 				if(opcS[0]=='3'){//Asesinos
-					mvprintw(0,3,"Ingrese la cantidad de asesinatos: ");
+					mvprintw(3,0,"Ingrese la cantidad de asesinatos: ");
 					getstr(cantAsesinato);
 					do{
-						mvprintw(0,4,"Ingrese la capacidad de pasar desapercibido: ");
+						mvprintw(4,0,"Ingrese la capacidad de pasar desapercibido: ");
 						getstr(cDesapercibido);
 					}while(atoi(cDesapercibido)>0 && atoi(cDesapercibido)<11);
 					escuadrones.at(contador)->addSoldado(new Asesinos(nombreSoldado, ciudad, atoi(edad), atoi(cantAsesinato), atoi(cDesapercibido)));
