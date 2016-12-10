@@ -15,12 +15,18 @@ void cleanScreen();
 
 int main(){
 	initscr();
+	start_color();
 	int contador = 0;
 	char opc[1];
 	vector<Escuadron*> escuadrones;
 	do{
 		//mvprintw(0,0,"");
+		init_pair(1, COLOR_RED, COLOR_BLACK);
+		init_pair(2, COLOR_BLUE, COLOR_BLACK);
+		init_pair(3, COLOR_GREEN, COLOR_BLACK);
+		attron(COLOR_PAIR(1));
 		mvprintw(0,0,"Menu\n1. Crear un escuadron\n2. Simulador\nPor favor, ingrese su opcion\n");
+		attroff(COLOR_PAIR(1));
 		getstr(opc);
 		clear();
 		if(opc[0]=='1'){//Opc 1
@@ -47,7 +53,7 @@ int main(){
 				char dureza[13], cantLanzas[13];//Coraza
 				char cantAsesinato[13], cDesapercibido[13];//Asesinos
 				mvprintw(0,0,"Ingrese que tipo de soldado quiere\n");
-				mvprintw(0,1,"1. Arquero\n2. Coraza\n3. Asesino\n");
+				mvprintw(1,0,"1. Arquero\n2. Coraza\n3. Asesino\n");
 				getstr(opcS);
 				clear();
 				mvprintw(0,0,"Ingrese el nombre del soldado: ");
@@ -68,24 +74,30 @@ int main(){
 					do{
 						mvprintw(3,0,"Ingrese la dureza de la armadura del soldado: ");
 						getstr(dureza);
-					}while(atoi(dureza)>0 && atoi(dureza)<11);
+					}while(atoi(dureza)<0 || atoi(dureza)>11);
 					mvprintw(4,0,"Ingrese la cantidad de lanzas: ");
 					getstr(cantLanzas);
 					escuadrones.at(contador)->addSoldado(new Corazas(nombreSoldado, ciudad, atoi(edad), atoi(dureza), atoi(cantLanzas)));
 				}
 				if(opcS[0]=='3'){//Asesinos
+					bool validcDes=false;
 					mvprintw(3,0,"Ingrese la cantidad de asesinatos: ");
 					getstr(cantAsesinato);
 					do{
-						mvprintw(4,0,"Ingrese la capacidad de pasar desapercibido: ");
+
+						mvprintw(4,0,"Ingrese la capacidad de pasar desapercibido: \n");
 						getstr(cDesapercibido);
-					}while(atoi(cDesapercibido)>0 && atoi(cDesapercibido)<11);
+						if(atoi(cDesapercibido)<0 || atoi(cDesapercibido)>11){
+							validcDes=false;
+							mvprintw(4,0, "Tiene que ser menor que 11 y mayor que 0.");
+						}
+					}while(!validcDes);
 					escuadrones.at(contador)->addSoldado(new Asesinos(nombreSoldado, ciudad, atoi(edad), atoi(cantAsesinato), atoi(cDesapercibido)));
 				}
 				clear();
 			}//fin for
 			contador++;
-		}//fin opcion 1
+		}//fin opcion 1mvprintw
 
 		if(opc[0]=='2'){
 			if(escuadrones.size() >= 4){
@@ -98,30 +110,35 @@ int main(){
 					tryW = escuadrones.at(i)->toString();
 
 					printw("\n %d %s",i,tryW.c_str());
-					getch();
+					//getch();
 				}
+				attron(COLOR_PAIR(2));
 				printw("Ingrese el primer escuadron del primer bando:\n");
 				char frontP[1];
 				getstr(frontP);
-				clear();
+				//clear();
 				printw("Ingrese el segundo escuadron del primer bando:\n");
 				char retaP[1];
 				getstr(retaP);
-				clear();
+				attroff(COLOR_PAIR(2));
+				//clear();
 				bando1.push_back(escuadrones.at(atoi(frontP)));
 				bando1.push_back(escuadrones.at(atoi(retaP)));
+				attron(COLOR_PAIR(3));
 				printw("Ingrese el primer escuadron del segundo bando:\n");
 				char frontP2[1];
 				getstr(frontP2);
-				clear();
+				//clear();
 				printw("Ingrese el segundo escuadron del segundo bando:\n");
 				char retaP2[1];
 				getstr(retaP2);
+				attroff(COLOR_PAIR(3));
 				clear();
 				bando2.push_back(escuadrones.at(atoi(frontP2)));
 				bando2.push_back(escuadrones.at(atoi(retaP2)));
 				bool ganador = false;
 				int contador2 = 0;
+
 				do{
 					char front[1];
 					char reta[1];
@@ -131,14 +148,15 @@ int main(){
 						tryW = bando1.at(i)->toString();
 
 						printw("\n %d %s",i,tryW.c_str());
-						getch();
+						//getch();
 					}
+					printw("Bando 2:\n");
 					for (int i = 0; i < bando2.size(); ++i)
 					{
 						tryW = bando2.at(i)->toString();
 
 						printw("\n %d %s",i,tryW.c_str());
-						getch();
+						//getch();
 					}
 
 					if(contador2 % 2 == 0){
