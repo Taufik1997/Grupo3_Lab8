@@ -112,6 +112,7 @@ int main(){
 					printw("\n %d %s",i,tryW.c_str());
 					//getch();
 				}
+				printw("\n");
 				attron(COLOR_PAIR(2));
 				printw("Ingrese el primer escuadron del primer bando:\n");
 				char frontP[1];
@@ -150,6 +151,7 @@ int main(){
 						printw("\n %d %s",i,tryW.c_str());
 						//getch();
 					}
+					printw("\n");
 					printw("Bando 2:\n");
 					for (int i = 0; i < bando2.size(); ++i)
 					{
@@ -158,7 +160,7 @@ int main(){
 						printw("\n %d %s",i,tryW.c_str());
 						//getch();
 					}
-
+					printw("\n");
 					if(contador2 % 2 == 0){
 						printw("Es el turno del bando uno para atacar, ingrese el escuadron frontal para atacar:\n");
 						getstr(front);
@@ -179,6 +181,7 @@ int main(){
 
 					}
 					contador2++;
+					clear();
 				}while(!ganador);
 				if((contador2-1) % 2 == 0){
 					printw("El ganador es el bando 2!");
