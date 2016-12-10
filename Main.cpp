@@ -80,7 +80,7 @@ int main(){
 					escuadrones.at(contador)->addSoldado(new Corazas(nombreSoldado, ciudad, atoi(edad), atoi(dureza), atoi(cantLanzas)));
 				}
 				if(opcS[0]=='3'){//Asesinos
-					bool validcDes=false;
+					bool validcDes=true;
 					mvprintw(3,0,"Ingrese la cantidad de asesinatos: ");
 					getstr(cantAsesinato);
 					do{
